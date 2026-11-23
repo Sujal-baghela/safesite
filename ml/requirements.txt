@@ -1,0 +1,23 @@
+# CV / ML dependencies for the SafeSite detection engine
+# Install with: pip install -r requirements.txt
+
+# Core inference
+ultralytics>=8.3.0        # YOLO11 — includes torch dependency
+torch>=2.3.0              # PyTorch (CPU build; use torch+cu121 for CUDA)
+torchvision>=0.18.0
+
+# Computer vision
+opencv-python>=4.10.0
+numpy>=1.26.0
+Pillow>=10.4.0
+
+# Annotation + tracking
+supervision>=0.23.0       # Roboflow supervision for bbox drawing, tracking
+
+# Video processing
+# FFmpeg must be installed at the OS level: apt install ffmpeg
+# opencv-python includes VideoCapture which wraps FFmpeg
+
+# Utilities
+boto3>=1.35.0             # R2 upload from worker
+python-dotenv>=1.0.1

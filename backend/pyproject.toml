@@ -1,0 +1,72 @@
+[project]
+name = "safesite-backend"
+version = "0.1.0"
+description = "SafeSite Construction Safety Monitoring — FastAPI Backend"
+requires-python = ">=3.12"
+dependencies = [
+    # Web framework
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    # Database
+    "sqlalchemy[asyncio]>=2.0.36",
+    "alembic>=1.13.3",
+    "asyncpg>=0.30.0",
+    "psycopg2-binary>=2.9.9",
+    # Validation
+    "pydantic>=2.9.2",
+    "pydantic-settings>=2.5.2",
+    "email-validator>=2.2.0",
+    # Auth
+    "python-jose[cryptography]>=3.3.0",
+    "passlib[bcrypt]>=1.7.4",
+    "bcrypt>=4.0.1,<5",
+    "python-multipart>=0.0.12",
+    # Cache / Queue
+    "redis>=5.1.1",
+    "arq>=0.26.1",
+    # Rate limiting
+    "slowapi>=0.1.9",
+    # Storage
+    "boto3>=1.35.0",
+    # Notifications
+    "resend>=2.3.0",
+    "twilio>=9.3.4",
+    # Utils
+    "httpx>=0.27.2",
+    "python-dotenv>=1.0.1",
+    "sentry-sdk[fastapi]>=2.16.0",
+    "reportlab>=4.2.5",
+    "weasyprint>=62.3",
+    "pillow>=10.4.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.3",
+    "pytest-asyncio>=0.24.0",
+    "httpx>=0.27.2",
+    "aiosqlite>=0.20.0",
+]
